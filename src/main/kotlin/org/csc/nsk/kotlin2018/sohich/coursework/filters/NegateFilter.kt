@@ -19,7 +19,7 @@ class NegateFilter: Filter {
         return newImage
     }
 
-    private fun invertPixelColor(pixelRGB:Int):Int {
+    private fun invertPixelColor(pixelRGB:Int): Int {
         val pixelColor = Color(pixelRGB)
         return Color(
                 255 - pixelColor.red,

@@ -14,13 +14,10 @@ class ZoomFilter: Filter {
         val xScale = 1.0 * (oldWidth - 1) / newWidth
         val yScale = 1.0 * (oldHeight - 1) / newHeight
 
-        for (j in 0 until newHeight)
-        {
+        for (j in 0 until newHeight) {
             val y = (yScale * j).toInt()
             val yDiff = yScale * j - y
-            for (i in 0 until newWidth)
-            {
-
+            for (i in 0 until newWidth) {
                 val x = (xScale * i).toInt()
                 val xDiff = xScale * i - x
                 val x00 = Color(originalImage.getRGB(x, y))
@@ -41,6 +38,8 @@ class ZoomFilter: Filter {
                         + x01.blue.toDouble() * xDiff * (1 - yDiff)
                         + x10.blue.toDouble() * (1 - xDiff) * yDiff
                         + x11.blue.toDouble() * xDiff * yDiff)).toInt()
+
+                fun saturate(value: Int) = Math.max(0, Math.min(value, 255))
                 newImage.setRGB(i, j, Color(
                         saturate(redValue),
                         saturate(greenValue),
@@ -49,7 +48,5 @@ class ZoomFilter: Filter {
         }
         return newImage
     }
-    private fun saturate(value:Int):Int {
-        return if (value < 0) 0 else (if (value > 255) 255 else value)
-    }
+
 }
