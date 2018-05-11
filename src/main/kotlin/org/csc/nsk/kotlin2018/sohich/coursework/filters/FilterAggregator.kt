@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage
 class FilterAggregator {
     private var filters = arrayOf<Filter>()
 
-    fun addFIlter(filter: Filter) {
+    fun addFilter(filter: Filter) {
         filters += filter
     }
 
